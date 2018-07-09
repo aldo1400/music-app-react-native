@@ -12,7 +12,8 @@ import {
   Text,
   Alert,
   Image,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 import ArtistBox from './ArtistBox';
@@ -38,14 +39,14 @@ export default class App extends Component{
       comments:140
     }
     return (
-      <View style={styles.container}>
-        <ArtistBox artist={artist}/>
-        <ArtistBox artist={artist}/>
-        <ArtistBox artist={artist}/>
-        <ArtistBox artist={artist}/>
-        <ArtistBox artist={artist}/>
-        <ArtistBox artist={artist}/>
-      </View>
+      <ScrollView style={styles.container}>
+        {
+          Array(500).fill(artist).map(()=>{
+            return <ArtistBox artist={artist}/>
+          })
+        }
+        
+      </ScrollView>
     );
   }
 }
